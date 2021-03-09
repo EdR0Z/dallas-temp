@@ -48,7 +48,7 @@ void loop() {
 
             Serial.println(TmpConsign);
 
-            timer_transition += TIME_BOUTTON;
+            timer_transition = millis();
         }
     }else{
         if((millis() - derniereMesure) >= DELAI_MESURE_TEMPERATURE){
