@@ -11,7 +11,7 @@ LiquidCrystal_I2C lcd(0x27, 20, 4);
 #define RELAY 11
 #define BUTTON_MINOR 2
 #define BUTTON_MAJOR 3
-#define DELAI_MESURE_TEMPERATURE 5000
+#define DELAI_MESURE_TEMPERATURE 1000
 #define TIME_BOUTTON 250
  
 int TmpConsign = 0;
