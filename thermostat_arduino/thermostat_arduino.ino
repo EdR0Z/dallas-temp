@@ -46,8 +46,6 @@ void loop() {
             lcd.setCursor(3, 0);
             lcd.print(TmpConsign);
 
-            Serial.println(TmpConsign);
-
             timer_transition = millis();
         }
     }else{
