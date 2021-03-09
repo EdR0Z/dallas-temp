@@ -23,7 +23,7 @@ void setup(void) {
     lcd.setCursor(0, 0);
     lcd.print("C1");
     lcd.setCursor(3, 0);
-    lcd.print(float(TmpConsign));
+    lcd.print(TmpConsign));
 
     Serial.begin(9600);
 
@@ -44,7 +44,7 @@ void loop() {
             lcd.setCursor(0, 0);
             lcd.print("C1");
             lcd.setCursor(3, 0);
-            lcd.print(float(TmpConsign));
+            lcd.print(TmpConsign));
 
             Serial.println(TmpConsign);
 
