@@ -9,6 +9,7 @@ DallasTemperature sensors(&oneWire);
 LiquidCrystal_I2C lcd(0x27, 20, 4);
  
 #define RELAY 11
+#define BUZZER 10
 #define BUTTON_MINOR 2
 #define BUTTON_MAJOR 3
 #define DELAI_MESURE_TEMPERATURE 1000
@@ -30,6 +31,7 @@ void setup(void) {
     pinMode(BUTTON_MINOR, INPUT);
     pinMode(BUTTON_MAJOR, INPUT);
     pinMode(RELAY, OUTPUT);
+    pinMode(BUZZER, OUTPUT);
 }
  
 void loop() {
