@@ -17,6 +17,9 @@ LiquidCrystal_I2C lcd(0x27, 20, 4);
 
 int TmpConsign = 0;
 
+
+
+
 void setup(void) {
   lcd.init();
   lcd.backlight();
@@ -38,6 +41,9 @@ void setup(void) {
   pinMode(RELAY, OUTPUT);
   pinMode(BUZZER, OUTPUT);
 }
+
+
+
 
 void loop() {
   static uint32_t derniereMesure = millis();
