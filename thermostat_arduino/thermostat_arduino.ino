@@ -44,14 +44,14 @@ void loop() {
             TmpConsign += (!digitalRead(BUTTON_MINOR))? -1 : 1;
             
             lcd.setCursor(0, 0);
-            lcd.print("S1");
+            lcd.print("S1"); //index consigne de déclenchement du relais, colonne0, ligne0
             lcd.setCursor(3, 0);
-            lcd.print(TmpConsign);
+            lcd.print(TmpConsign); //affichage consigne de déclenchement du relais, colonne3, ligne0
 
             lcd.setCursor(0, 1);
-            lcd.print("C1");
+            lcd.print("C1"); //index température critique, colonne0, ligne1
             lcd.setCursor(3, 1);
-            lcd.print(TmpConsign + 5);  
+            lcd.print(TmpConsign + 5); //affichage température critique, colonne3, ligne1
 
             timer_transition = millis();
         }
@@ -61,13 +61,14 @@ void loop() {
             temperature = sensors.getTempCByIndex(0);
 
             lcd.setCursor(0, 2);
-            lcd.print("T1");
+            lcd.print("T1"); //index temperature relevée, colonne0, ligne2
             lcd.setCursor(3, 2);
-            lcd.print(temperature);
+            lcd.print(float(temperature)); //affichage temperature relevée, colonne3, ligne2
 
             derniereMesure = millis();
         }
 
         digitalWrite(RELAY, (temperature >= TmpConsign));
+        digitalWrite(BUZZER, (temperature >= TmpConsign + 5));
     }
 }
