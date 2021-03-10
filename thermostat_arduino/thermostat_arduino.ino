@@ -44,9 +44,14 @@ void loop() {
             TmpConsign += (!digitalRead(BUTTON_MINOR))? -1 : 1;
             
             lcd.setCursor(0, 0);
-            lcd.print("C1");
+            lcd.print("S1");
             lcd.setCursor(3, 0);
             lcd.print(TmpConsign);
+
+            lcd.setCursor(0, 1);
+            lcd.print("C1");
+            lcd.setCursor(3, 1);
+            lcd.print(TmpConsign + 5);  
 
             timer_transition = millis();
         }
@@ -55,9 +60,9 @@ void loop() {
             sensors.requestTemperatures();
             temperature = sensors.getTempCByIndex(0);
 
-            lcd.setCursor(0, 1);
+            lcd.setCursor(0, 2);
             lcd.print("T1");
-            lcd.setCursor(3, 1);
+            lcd.setCursor(3, 2);
             lcd.print(temperature);
 
             derniereMesure = millis();
