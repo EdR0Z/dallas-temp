@@ -80,6 +80,6 @@ void loop() {
     }
 
     digitalWrite(RELAY, (temperature >= TmpConsign));
-    digitalWrite(BUZZER, (temperature >= TmpConsign + 5));
+    digitalWrite(BUZZER, (temperature >= TmpConsign + 5)),
   }
 }
