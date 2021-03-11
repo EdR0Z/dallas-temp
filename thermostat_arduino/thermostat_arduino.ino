@@ -15,24 +15,30 @@ LiquidCrystal_I2C lcd(0x27, 20, 4);
 #define DELAI_MESURE_TEMPERATURE 1000 //délai entre deux mesures de température
 #define TIME_BOUTTON 250 //delai entre deux incrémentations de la consigne de température pour l'augmentation ou la vitesse de celle-ci
 
-int TmpConsign = 0;
-
-
+int TmpConsign = 30;
 
 
 void setup(void) {
   lcd.init();
   lcd.backlight();
 
-  Serial.begin(9600);
+  lcd.setCursor(3, 0);
+  lcd.setCursor(0, 0);
+  lcd.print("S1"); //index consigne de déclenchement du relais, colonne0, ligne0
+  lcd.setCursor(3, 0);
+  lcd.print(TmpConsign); //affichage consigne de déclenchement du relais, colonne3, ligne0
 
+  lcd.setCursor(0, 1);
+  lcd.print("C1"); //index température critique, colonne0, ligne1
+  lcd.setCursor(3, 1);
+  lcd.print(TmpConsign + 2); //affichage température critique, colonne3, ligne1
+
+  Serial.begin(9600);
   pinMode(BUTTON_MINOR, INPUT);
   pinMode(BUTTON_MAJOR, INPUT);
   pinMode(RELAY, OUTPUT);
   pinMode(BUZZER, OUTPUT);
 }
-
-
 
 
 void loop() {
@@ -70,14 +76,17 @@ void loop() {
     }
 
     digitalWrite(RELAY, (temperature >= TmpConsign));
+
     if (temperature >= TmpConsign + 2) {
       digitalWrite(BUZZER, HIGH);
+      delay(1000);
+      digitalWrite(BUZZER, LOW);
       lcd.setCursor(0, 3);
       lcd.print("Temp Critic");
     } else {
       digitalWrite(BUZZER, LOW);
       lcd.setCursor(0, 3);
-      lcd.print("Temp ok");
+      lcd.print("Temp Ok    ");
     }
   }
 }
