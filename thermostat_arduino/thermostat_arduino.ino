@@ -24,16 +24,6 @@ void setup(void) {
   lcd.init();
   lcd.backlight();
 
-  lcd.setCursor(0, 0);
-  lcd.print("S1"); //index consigne de déclenchement du relais, colonne0, ligne0
-  lcd.setCursor(3, 0);
-  lcd.print(TmpConsign); //affichage consigne de déclenchement du relais, colonne3, ligne0
-
-  lcd.setCursor(0, 1);
-  lcd.print("C1"); //index température critique, colonne0, ligne1
-  lcd.setCursor(3, 1);
-  lcd.print(TmpConsign + 5); //affichage température critique, colonne3, ligne1
-
   Serial.begin(9600);
 
   pinMode(BUTTON_MINOR, INPUT);
