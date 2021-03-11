@@ -79,7 +79,7 @@ void loop() {
 
     if (temperature >= TmpConsign + 2) {
       digitalWrite(BUZZER, HIGH);
-      delay(1000);
+      delay(100);
       digitalWrite(BUZZER, LOW);
       lcd.setCursor(0, 3);
       lcd.print("Temp Critic");
