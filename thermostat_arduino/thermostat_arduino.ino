@@ -62,7 +62,7 @@ void loop() {
       lcd.setCursor(0, 1);
       lcd.print("C1"); //index température critique, colonne0, ligne1
       lcd.setCursor(3, 1);
-      lcd.print(TmpConsign + 5); //affichage température critique, colonne3, ligne1
+      lcd.print(TmpConsign + 2); //affichage température critique, colonne3, ligne1
 
       timer_transition = millis();
     }
@@ -80,6 +80,14 @@ void loop() {
     }
 
     digitalWrite(RELAY, (temperature >= TmpConsign));
-    digitalWrite(BUZZER, (temperature >= TmpConsign + 5));
+    if (temperature >= TmpConsign + 2) {
+      digitalWrite(BUZZER, HIGH);
+      lcd.setCursor(0, 3);
+      lcd.print("Critic Temp");
+    } else {
+      lcd.setCursor(0, 3);
+      lcd.print("Temp ok");
+      digitalWrite(BUZZER, LOW);
+    }
   }
 }
