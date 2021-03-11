@@ -15,7 +15,7 @@ LiquidCrystal_I2C lcd(0x27, 20, 4);
 #define DELAI_MESURE_TEMPERATURE 1000 //délai entre deux mesures de température
 #define TIME_BOUTTON 250 //delai entre deux incrémentations de la consigne de température pour l'augmentation ou la vitesse de celle-ci
 
-int TmpConsign = 30;
+int TmpConsign = 0;
 
 
 void setup(void) {
@@ -79,7 +79,7 @@ void loop() {
 
     if (temperature >= TmpConsign + 2) {
       digitalWrite(BUZZER, HIGH);
-      delay(100);
+      delay(500);
       digitalWrite(BUZZER, LOW);
       lcd.setCursor(0, 3);
       lcd.print("Temp Critic");
